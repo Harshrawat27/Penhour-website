@@ -1,15 +1,9 @@
 import type { ComponentType } from "react";
 import { formatPrice, site } from "@/lib/site";
 import { type IconProps, ArrowRightIcon, CheckIcon, LockIcon, MoonIcon, PencilIcon, SearchIcon, TimerIcon } from "./icons";
-import { Logo } from "./logo";
+import { SiteNav } from "./site-nav";
 import { buttonGlass, buttonPrimary } from "./ui";
 
-const navLinks = [
-  { href: "#how", label: "How it works" },
-  { href: "#privacy", label: "Privacy" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
-];
 
 type Chip = {
   label: string;
@@ -45,27 +39,7 @@ export function Hero() {
   return (
     <div className="px-3 pt-3">
       <header className="sky relative overflow-hidden rounded-t-[28px] px-5 pt-5">
-        <nav
-          aria-label="Main"
-          className="glass mx-auto flex max-w-[1080px] items-center justify-between gap-4 rounded-full py-2 pr-2 pl-[18px]"
-        >
-          <a href="#top" className="text-ink">
-            <Logo />
-          </a>
-          <div className="hidden gap-8 md:flex">
-            {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="text-sm font-medium text-ink hover:text-accent">
-                {l.label}
-              </a>
-            ))}
-          </div>
-          <a
-            href={site.buyUrl}
-            className="inline-flex h-10 items-center rounded-full bg-accent px-[18px] text-sm font-semibold whitespace-nowrap text-on-accent hover:bg-accent-hover"
-          >
-            Get<span className="hidden sm:inline">&nbsp;{site.name}</span>
-          </a>
-        </nav>
+        <SiteNav />
 
         <div id="top" className="mx-auto flex max-w-[900px] flex-col items-center gap-6 px-2 pt-[88px] text-center">
           <div className="glass inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2 text-sm leading-5 font-medium">

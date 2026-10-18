@@ -38,11 +38,15 @@ export function CheckList({ items }: { items: string[] }) {
   );
 }
 
-export const buttonPrimary =
-  "inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full bg-accent px-[26px] text-[15px] font-semibold text-on-accent shadow-[inset_0_1px_0_rgb(255_253_248/0.25)] transition-colors hover:bg-accent-hover";
+/**
+ * One button system for the whole site. Every button shares the same height,
+ * radius, padding and type; only the fill changes.
+ */
+const buttonBase =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold whitespace-nowrap transition-colors";
 
-export const buttonGlass =
-  "glass inline-flex h-[52px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold text-ink transition-colors hover:text-accent";
+export const buttonPrimary = `${buttonBase} bg-accent text-on-accent shadow-[inset_0_1px_0_rgb(255_253_248/0.25)] hover:bg-accent-hover`;
 
-export const buttonOutline =
-  "inline-flex h-12 items-center justify-center rounded-full border border-rule-strong px-6 text-[15px] font-semibold text-ink transition-colors hover:bg-paper-sunken";
+export const buttonGlass = `glass ${buttonBase} text-ink hover:text-accent`;
+
+export const buttonOutline = `${buttonBase} border border-rule-strong text-ink hover:bg-paper-sunken`;

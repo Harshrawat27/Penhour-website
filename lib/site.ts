@@ -7,8 +7,20 @@ export const site = {
   tagline: "Write on paper, keep it on your Mac.",
   description:
     "A quiet Mac app for people who think better with a pen. Press Start, write by hand, then scan your pages into a private, searchable notebook that never leaves your Mac.",
-  /** Where "Get PenHour" buttons go. Point this at checkout once it exists. */
+  /** Where "Get / Buy PenHour" buttons go. Point this at checkout once it exists. */
   buyUrl: "#pricing",
+  /** Direct link to the .dmg (or Mac App Store page). */
+  downloadUrl: "[DOWNLOAD URL]",
+  /**
+   * Newsletter signup endpoint. The form POSTs JSON { email } here.
+   * Leave empty until you connect a provider (Buttondown, ConvertKit, Resend…).
+   */
+  newsletterEndpoint: "",
+  contactEmail: "[CONTACT EMAIL]",
+  /** Who the legal pages are from, and where. */
+  legalName: "[YOUR NAME OR COMPANY]",
+  jurisdiction: "[COUNTRY / STATE]",
+  legalLastUpdated: "18 October 2026",
   macosVersion: "[VERSION]",
   copyrightYear: 2026,
   pricing: {

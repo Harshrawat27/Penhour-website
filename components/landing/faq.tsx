@@ -1,3 +1,6 @@
+"use client";
+
+import { useId, useState } from "react";
 import { PlusIcon } from "./icons";
 
 const faqs = [
@@ -24,23 +27,53 @@ const faqs = [
 ];
 
 export function Faq() {
+  const [open, setOpen] = useState<number | null>(0);
+  const baseId = useId();
+
   return (
-    <section id="faq" className="faq mx-auto max-w-[760px] scroll-mt-6 px-6 pt-[100px] pb-[120px]">
+    <section id="faq" className="mx-auto max-w-[760px] scroll-mt-6 px-6 pt-[100px] pb-[120px]">
       <h2 className="mb-8 text-center font-serif text-[clamp(32px,3.8vw,44px)] leading-[1.1] font-normal">
         Questions, answered plainly
       </h2>
       <div className="border-t border-rule">
-        {faqs.map((f, i) => (
-          <details key={f.q} className="border-b border-rule" open={i === 0}>
-            <summary className="flex items-center justify-between gap-4 px-1 py-[22px] text-[17px] font-semibold">
-              {f.q}
-              <span className="plus inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                <PlusIcon width={12} height={12} />
-              </span>
-            </summary>
-            <p className="px-1 pb-[22px] text-[15px] leading-6 text-ink-muted">{f.a}</p>
-          </details>
-        ))}
+        {faqs.map((f, i) => {
+          const isOpen = open === i;
+          const panelId = `${baseId}-panel-${i}`;
+          const buttonId = `${baseId}-button-${i}`;
+          return (
+            <div key={f.q} className="border-b border-rule">
+              <h3>
+                <button
+                  id={buttonId}
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 px-1 py-[22px] text-left text-[17px] font-semibold transition-colors hover:text-accent"
+                >
+                  {f.q}
+                  <span
+                    className={`inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] motion-reduce:transition-none ${isOpen ? "rotate-45" : ""}`}
+                  >
+                    <PlusIcon width={12} height={12} />
+                  </span>
+                </button>
+              </h3>
+              {/* Height animates by moving the grid row from 0fr to 1fr. */}
+              <div
+                id={panelId}
+                role="region"
+                aria-labelledby={buttonId}
+                inert={!isOpen}
+                className={`grid transition-[grid-template-rows,opacity] duration-[400ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-1 pb-[22px] text-[15px] leading-6 text-ink-muted">{f.a}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

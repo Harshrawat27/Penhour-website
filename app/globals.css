@@ -114,21 +114,6 @@ body {
   margin: 0 -3px;
 }
 
-/* FAQ disclosure */
-.faq summary {
-  cursor: pointer;
-  list-style: none;
-}
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-.faq .plus {
-  transition: transform 0.2s ease;
-}
-.faq details[open] .plus {
-  transform: rotate(45deg);
-}
-
 /* Slow, soft drift for hero paper and chips. */
 @keyframes drift {
   0%,
@@ -227,4 +212,243 @@ body {
   box-shadow:
     0 0 0 4px var(--color-accent-soft),
     0 0 0 6px var(--color-accent);
+}
+
+/* ---------- How it works: card scenes ----------
+   Each card sets data-active="true" on hover (or in view on touch screens).
+   Rules without [data-active] are the resting state; leaving resets instantly. */
+
+.step-card {
+  transition:
+    translate 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.step-card[data-active="true"] {
+  translate: 0 -4px;
+  box-shadow: 0 28px 48px -28px rgb(30 50 90 / 0.35);
+}
+
+/* Shared: small things that pop into the scene */
+.pop {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.96);
+}
+[data-active="true"] .pop {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25);
+}
+
+/* 01 · Press Start */
+.start-cursor {
+  opacity: 0;
+  transform: translate(64px, 56px);
+}
+[data-active="true"] .start-cursor {
+  animation: start-cursor 1.2s cubic-bezier(0.25, 0.7, 0.25, 1) forwards;
+}
+@keyframes start-cursor {
+  0% { opacity: 0; transform: translate(64px, 56px); }
+  15% { opacity: 1; }
+  45% { transform: translate(0, 0); }
+  55% { transform: translate(0, 0) scale(0.82); }
+  68% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(8px, 10px); }
+}
+[data-active="true"] .start-btn {
+  animation: start-btn 1s ease forwards;
+}
+@keyframes start-btn {
+  0%, 50% { opacity: 1; transform: scale(1); }
+  58% { transform: scale(0.93); }
+  72% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.96); }
+}
+.start-progress {
+  opacity: 0;
+}
+[data-active="true"] .start-progress {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.85s;
+}
+.start-progress-fill {
+  width: 0;
+}
+[data-active="true"] .start-progress-fill {
+  width: 30%;
+  transition: width 12s linear 1s;
+}
+
+/* 02 · Write by hand */
+.write-page {
+  --x0: 36px;
+  --w1: 161px;
+  --w2: 152px;
+  --w3: 48px;
+  --y1: 45px;
+  --y2: 73px;
+  --y3: 101px;
+}
+.hand-line {
+  clip-path: inset(-4px 100% -6px -4px);
+}
+[data-active="true"] .hand-line {
+  animation: hand-write linear forwards;
+}
+[data-active="true"] .hand-line-1 { animation-duration: 1.2s; animation-delay: 0.25s; }
+[data-active="true"] .hand-line-2 { animation-duration: 1.2s; animation-delay: 1.7s; }
+[data-active="true"] .hand-line-3 { animation-duration: 0.5s; animation-delay: 3.15s; }
+@keyframes hand-write {
+  to { clip-path: inset(-4px -4px -6px -4px); }
+}
+.pen {
+  transform: translate(calc(var(--x0) + 10px), calc(var(--y1) - 14px)) rotate(-6deg);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-active="true"] .pen {
+  animation: pen-write 4.3s linear forwards;
+}
+/* Timeline matches the lines above: 0.25–1.45s, 1.7–2.9s, 3.15–3.65s. */
+@keyframes pen-write {
+  0% { transform: translate(calc(var(--x0) + 10px), calc(var(--y1) - 14px)) rotate(-6deg); }
+  5.8% { transform: translate(var(--x0), var(--y1)) rotate(0deg); }
+  15% { transform: translate(calc(var(--x0) + var(--w1) * 0.35), calc(var(--y1) - 2px)) rotate(1deg); }
+  25% { transform: translate(calc(var(--x0) + var(--w1) * 0.7), calc(var(--y1) + 1px)) rotate(-1deg); }
+  33.7% { transform: translate(calc(var(--x0) + var(--w1)), var(--y1)) rotate(0deg); }
+  39.5% { transform: translate(var(--x0), var(--y2)) rotate(0deg); }
+  50% { transform: translate(calc(var(--x0) + var(--w2) * 0.4), calc(var(--y2) - 2px)) rotate(1deg); }
+  60% { transform: translate(calc(var(--x0) + var(--w2) * 0.75), calc(var(--y2) + 1px)) rotate(-1deg); }
+  67.4% { transform: translate(calc(var(--x0) + var(--w2)), var(--y2)) rotate(0deg); }
+  73.3% { transform: translate(var(--x0), var(--y3)) rotate(0deg); }
+  84.9% { transform: translate(calc(var(--x0) + var(--w3)), var(--y3)) rotate(0deg); }
+  100% { transform: translate(calc(var(--x0) + var(--w3) + 60px), calc(var(--y3) + 30px)) rotate(10deg); }
+}
+
+/* 03 · Scan it home */
+.scan-line {
+  top: 8%;
+  opacity: 0;
+}
+[data-active="true"] .scan-line {
+  animation: scan-sweep 1.1s ease-in-out 0.15s 1 forwards;
+}
+@keyframes scan-sweep {
+  0% { top: 8%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 92%; opacity: 0; }
+}
+.scan-flash {
+  opacity: 0;
+}
+[data-active="true"] .scan-flash {
+  animation: scan-flash 0.5s ease-out 1.25s forwards;
+}
+@keyframes scan-flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+.scan-page {
+  opacity: 0;
+  transform: translateX(-150px) scale(0.55) rotate(-8deg);
+}
+[data-active="true"] .scan-page {
+  animation: scan-fly 0.75s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+}
+[data-active="true"] .scan-page-1 { animation-delay: 1.35s; }
+[data-active="true"] .scan-page-2 { animation-delay: 1.85s; }
+@keyframes scan-fly {
+  0% { opacity: 0; transform: translateX(-150px) scale(0.55) rotate(-8deg); }
+  25% { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+[data-active="true"] .scan-arrow {
+  animation: scan-arrow 0.6s ease-in-out 1.3s 2;
+}
+@keyframes scan-arrow {
+  50% { transform: translateX(5px); }
+}
+
+/* Reduced motion: show each scene's finished state, no movement. */
+@media (prefers-reduced-motion: reduce) {
+  .step-card,
+  .step-card * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .step-card[data-active="true"] { translate: none; }
+  .hand-line { clip-path: none; }
+  .pen,
+  .start-cursor,
+  .scan-line,
+  .scan-flash { display: none; }
+  .scan-page,
+  [data-active="true"] .pop { opacity: 1; transform: none; }
+}
+
+/* Long-form legal text.
+   Spacing uses flex gaps rather than margins, so nothing (resets, collapsing) can squeeze it. */
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+}
+.legal > section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.legal > section + section:not(.legal-summary + section) {
+  border-top: 1px solid var(--color-rule);
+  padding-top: 48px;
+}
+.legal h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+.legal p,
+.legal ul {
+  margin: 0;
+}
+.legal ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+.legal ul > li {
+  position: relative;
+  padding-left: 24px;
+}
+.legal ul > li::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0.75em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  opacity: 0.6;
+}
+.legal strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.legal a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
