@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* PenHour design tokens (Day theme). */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: #f7f3ec;
+  --color-paper-raised: #fffdf8;
+  --color-paper-sunken: #efe9de;
+  --color-rule: #e2d9c9;
+  --color-rule-strong: #958870;
+  --color-ink: #1e1b16;
+  --color-ink-soft: #2a2620;
+  --color-ink-muted: #635a4c;
+  --color-handwriting: #2b2a33;
+
+  --color-accent: #2f4a7a;
+  --color-accent-hover: #263e67;
+  --color-accent-soft: #dce4f2;
+  --color-on-accent: #fffdf8;
+  --color-on-accent-muted: #d6deec;
+
+  /* Soft tints for a little colour, each paired with a readable ink. */
+  --color-ember: #b5532a;
+  --color-ember-soft: #f4e1d6;
+  --color-success: #3f6b4a;
+  --color-success-soft: #dce8de;
+  --color-plum: #4b3f7a;
+  --color-plum-soft: #e7e1f3;
+  --color-sun: #6b5410;
+  --color-sun-soft: #f6eab8;
+
+  --font-serif: var(--font-newsreader), "New York", Georgia, serif;
+  --font-sans: var(--font-instrument), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+
+  --shadow-page: 0 1px 2px rgba(30, 27, 22, 0.06), 0 8px 24px rgba(30, 27, 22, 0.08);
+  --shadow-float: 0 1px 2px rgba(30, 27, 22, 0.06), 0 18px 40px rgba(30, 50, 90, 0.18);
+  --shadow-float-lg: 0 1px 2px rgba(30, 27, 22, 0.06), 0 24px 56px rgba(30, 50, 90, 0.24);
+  --shadow-chip: 0 8px 24px rgba(30, 50, 90, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-paper);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Sky: fountain-pen blue fading into paper, with soft paper "clouds". */
+.sky {
+  background:
+    /* Last ~30% melts into the page colour so the hero has no visible bottom edge. */
+    linear-gradient(180deg, rgb(247 243 236 / 0) 68%, rgb(247 243 236 / 0.85) 88%, #f7f3ec 100%),
+    radial-gradient(55% 30% at 12% 92%, rgb(255 253 248 / 0.95), rgb(255 253 248 / 0) 70%),
+    radial-gradient(45% 28% at 88% 88%, rgb(255 253 248 / 0.92), rgb(255 253 248 / 0) 70%),
+    radial-gradient(70% 30% at 50% 104%, #f7f3ec, rgb(247 243 236 / 0) 80%),
+    radial-gradient(30% 18% at 78% 30%, rgb(255 253 248 / 0.35), rgb(255 253 248 / 0) 70%),
+    radial-gradient(26% 16% at 20% 38%, rgb(255 253 248 / 0.3), rgb(255 253 248 / 0) 70%),
+    linear-gradient(180deg, #6d89bc 0%, #a4b9dd 36%, #d6e0f0 66%, #f7f3ec 100%);
+}
+
+.sky-soft {
+  background:
+    radial-gradient(50% 60% at 15% 100%, rgb(255 253 248 / 0.9), rgb(255 253 248 / 0) 70%),
+    radial-gradient(45% 55% at 90% 100%, rgb(255 253 248 / 0.85), rgb(255 253 248 / 0) 70%),
+    linear-gradient(180deg, #a4b9dd 0%, #d6e0f0 60%, #ede9e0 100%);
+}
+
+.glass {
+  background: rgb(255 253 248 / 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 253 248 / 0.95);
+}
+
+/* Notebook ruling at two pitches. */
+.ruled {
+  background-color: var(--color-paper-raised);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--color-rule) 27px,
+    var(--color-rule) 28px
+  );
+}
+
+.ruled-sm {
+  background-color: var(--color-paper-raised);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 17px,
+    var(--color-rule) 17px,
+    var(--color-rule) 18px
+  );
+}
+
+/* Search hit drawn over handwriting, like a highlighter. */
+.hit {
+  background: rgb(234 196 64 / 0.45);
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 0 -3px;
+}
+
+/* FAQ disclosure */
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq .plus {
+  transition: transform 0.2s ease;
+}
+.faq details[open] .plus {
+  transform: rotate(45deg);
+}
+
+/* Slow, soft drift for hero paper and chips. */
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
