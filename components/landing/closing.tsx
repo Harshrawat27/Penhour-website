@@ -19,8 +19,8 @@ export function Closing() {
             Your desk is ready.
           </h2>
           <p className="max-w-[460px] text-lg leading-7 text-ink-soft">Put the keyboard away. Pick up your pen.</p>
-          <a href={site.downloadUrl} className={buttonPrimary}>
-            Download for Mac
+          <a href={site.buyUrl} className={buttonPrimary}>
+            Get {site.name}
             <ArrowRightIcon />
           </a>
         </div>

@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { site } from "@/lib/site";
+import { formatPrice, site } from "@/lib/site";
 import { type IconProps, ArrowRightIcon, CheckIcon, LockIcon, MoonIcon, PencilIcon, SearchIcon, TimerIcon } from "./icons";
 import { Logo } from "./logo";
 import { buttonGlass, buttonPrimary } from "./ui";
@@ -60,10 +60,10 @@ export function Hero() {
             ))}
           </div>
           <a
-            href={site.downloadUrl}
+            href={site.buyUrl}
             className="inline-flex h-10 items-center rounded-full bg-accent px-[18px] text-sm font-semibold whitespace-nowrap text-on-accent hover:bg-accent-hover"
           >
-            Download<span className="hidden sm:inline">&nbsp;for Mac</span>
+            Get<span className="hidden sm:inline">&nbsp;{site.name}</span>
           </a>
         </nav>
 
@@ -84,8 +84,8 @@ export function Hero() {
             private notebook you can search.
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-1">
-            <a href={site.downloadUrl} className={buttonPrimary}>
-              Download for Mac
+            <a href={site.buyUrl} className={buttonPrimary}>
+              Get {site.name} for {formatPrice(site.pricing.firstMac)}
               <ArrowRightIcon />
             </a>
             <a href="#how" className={buttonGlass}>
@@ -93,7 +93,7 @@ export function Hero() {
             </a>
           </div>
           <p className="text-[13px] leading-[18px] font-medium text-[#3b352c]">
-            Free trial · No account · Nothing leaves your Mac
+            One-time price · No account · Nothing leaves your Mac
           </p>
         </div>
 
