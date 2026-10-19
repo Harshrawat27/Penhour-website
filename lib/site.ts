@@ -7,7 +7,7 @@ export const site = {
   tagline: "Write on paper, keep it on your Mac.",
   description:
     "A quiet Mac app for people who think better with a pen. Press Start, write by hand, then scan your pages into a private, searchable notebook that never leaves your Mac.",
-  /** Where "Get / Buy PenHour" buttons go. Point this at checkout once it exists. */
+  /** Where "Get / Buy PenHour" buttons go. Checkout itself starts from the pricing section (app/api/checkout). */
   buyUrl: "#pricing",
   /** Direct link to the .dmg (or Mac App Store page). */
   downloadUrl: "[DOWNLOAD URL]",

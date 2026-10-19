@@ -121,13 +121,13 @@ export function PricingCalculator() {
           <span className="text-ink tabular-nums">{formatPrice(extraMac)}</span>.
         </p>
 
-        <a
-          href={site.buyUrl}
-          className={`${buttonPrimary} mt-6`}
-        >
-          Buy for {macLabel(macs)}
-          <ArrowRightIcon />
-        </a>
+        <form action="/api/checkout" method="post" className="mt-6 flex flex-col">
+          <input type="hidden" name="macs" value={macs} />
+          <button type="submit" className={buttonPrimary}>
+            Buy for {macLabel(macs)}
+            <ArrowRightIcon />
+          </button>
+        </form>
         <p className="mt-3 text-center text-xs text-ink-muted">Pay once. No subscription, no account.</p>
       </div>
 
