@@ -8,7 +8,7 @@ import { dodo } from "@/lib/dodo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Thanks for buying ${site.name}`,
+  title: { absolute: `Thanks for buying ${site.name}` },
   robots: { index: false },
 };
 

@@ -25,12 +25,31 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name}: ${site.tagline}`,
-  description: site.description,
+  metadataBase: new URL(site.url),
+  title: { default: site.metaTitle, template: `%s · ${site.name}` },
+  description: site.metaDescription,
+  applicationName: site.name,
+  keywords: [
+    "handwritten journal",
+    "journaling app for Mac",
+    "handwriting to text",
+    "scan handwritten notes",
+    "focus timer",
+    "private journal",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: `${site.name}: ${site.tagline}`,
-    description: site.description,
+    title: site.metaTitle,
+    description: site.metaDescription,
+    url: "/",
+    siteName: site.name,
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.metaTitle,
+    description: site.metaDescription,
   },
 };
 

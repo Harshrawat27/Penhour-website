@@ -3,7 +3,8 @@ import { Fill, LegalPage, type LegalSection } from "@/components/legal/legal-pag
 import { formatPrice, priceFor, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Terms of use · ${site.name}`,
+  title: "Terms of use",
+  alternates: { canonical: "/terms" },
   description: `The terms for buying and using ${site.name}.`,
 };
 

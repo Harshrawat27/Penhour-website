@@ -3,7 +3,8 @@ import { Fill, LegalPage, type LegalSection } from "@/components/legal/legal-pag
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Privacy policy · ${site.name}`,
+  title: "Privacy policy",
+  alternates: { canonical: "/privacy" },
   description: `How ${site.name} handles your data. Your journal stays on your Mac.`,
 };
 

@@ -4,7 +4,13 @@
  */
 export const site = {
   name: "PenHour",
+  /** The live site, used for canonical links, the sitemap and share previews. */
+  url: "https://penhour.com",
   tagline: "Write on paper, keep it on your Mac.",
+  /** The search result title and description (about 60 and 155 characters at most). */
+  metaTitle: "PenHour: Handwritten Journal App for Mac",
+  metaDescription:
+    "Write by hand in a focused, timed session with your keyboard locked, then scan your pages into a private journal you can search. Stays on your Mac.",
   description:
     "A quiet Mac app for people who think better with a pen. Press Start, write by hand, then scan your pages into a private, searchable notebook that never leaves your Mac.",
   /** Where "Get / Buy PenHour" buttons go. Checkout itself starts from the pricing section (app/api/checkout). */
