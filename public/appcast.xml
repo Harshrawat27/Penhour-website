@@ -5,5 +5,14 @@
     <link>https://penhour.com/appcast.xml</link>
     <description>PenHour updates</description>
     <language>en</language>
+    <item>
+      <title>Version 1.0.0</title>
+      <pubDate>Mon, 26 Oct 2026 12:41:23 GMT</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>First release of PenHour.</li><li>Timed handwriting sessions with your keyboard locked and notifications held.</li><li>Scan pages with your iPhone into a private notebook you can search.</li></ul>]]></description>
+      <enclosure url="https://github.com/Harshrawat27/penhour-releases/releases/download/v1.0.0/PenHour.dmg" type="application/octet-stream" sparkle:edSignature="ecQmklHvGjFb5wEB5fYDpRojY7i/sEV8P/qSWMZfExCPcA09hDqTTkIOdX6QPqMZt9pnnnxk4RyEBlzAKtz1Bg==" length="15985984" />
+    </item>
   </channel>
 </rss>

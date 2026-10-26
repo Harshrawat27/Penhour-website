@@ -8,7 +8,7 @@ const types = [
     methods: "Five whys · First principles · Pros and cons · Worst case",
   },
   { name: "Gratitude", guide: "Three small things from today you're glad about, and why.", tone: "bg-success-soft" },
-  { name: "Morning pages", guide: "Three pages, longhand, before the day gets loud.", tone: "bg-sun-soft" },
+  { name: "Creative writing", guide: "Start with a first line, a character or a scene. See where it goes.", tone: "bg-sun-soft" },
 ];
 
 export function SessionTypes() {
