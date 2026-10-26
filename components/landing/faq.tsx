@@ -25,6 +25,10 @@ const faqs = [
     a: "Yes, if you'd like. Add PenHour Guard once in the Shortcuts app and pick the apps to guard. During a session, opening one sends you back to the Home Screen with a reminder. The rest of the time they open as usual. It needs Focus shared across your Apple devices.",
   },
   {
+    q: "Which Macs does it work on?",
+    a: "Any Mac running macOS 14 Sonoma or later, Apple silicon or Intel. The better handwriting reader needs Apple silicon (M1 or newer); on Intel Macs, PenHour uses the built-in reader.",
+  },
+  {
     q: "Can I get a refund?",
     a: "Yes. Email contact@penhour.com within 7 days of buying, from the address you bought with, and we'll refund you in full.",
   },

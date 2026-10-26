@@ -67,7 +67,7 @@ export function Hero() {
             </a>
           </div>
           <p className="text-[13px] leading-[18px] font-medium text-[#3b352c]">
-            One-time price · No account · Nothing leaves your Mac
+            One-time price · No account · Nothing leaves your Mac · macOS {site.macosVersion.split(" ")[0]} or later
           </p>
         </div>
 
