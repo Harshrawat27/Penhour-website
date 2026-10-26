@@ -62,8 +62,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang='en'
       className={`${newsreader.variable} ${instrumentSans.variable} ${caveat.variable} scroll-smooth antialiased`}
     >
-      <body className='min-h-full bg-paper font-sans text-ink'>{children}</body>
-      <Analytics />
+      <body className='min-h-full bg-paper font-sans text-ink'>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
