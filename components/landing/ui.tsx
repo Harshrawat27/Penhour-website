@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import { CheckIcon } from "./icons";
 
-export function Eyebrow({ children, tone = "accent" }: { children: ReactNode; tone?: "accent" | "sun" }) {
+export function Eyebrow({ children, tone = "accent" }: { children: ReactNode; tone?: "accent" | "sun" | "plum" }) {
   const tones = {
     accent: "bg-accent-soft text-accent",
     sun: "bg-sun-soft text-sun",
+    plum: "bg-plum-soft text-plum",
   };
   return (
     <span

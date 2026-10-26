@@ -7,7 +7,7 @@ export const alt = `${site.name}: ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** The preview shown when penhour.com is shared: the logo, the tagline and a ruled page. */
+/** The preview shown when penhour.com is shared: the logo, the headline and a ruled page. */
 export default async function OpengraphImage() {
   const [regular, italic] = await Promise.all([
     readFile(join(process.cwd(), "assets/newsreader-display.ttf")),
@@ -43,12 +43,12 @@ export default async function OpengraphImage() {
           <div style={{ fontSize: 48 }}>{site.name}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 84, lineHeight: 1.05, letterSpacing: "-0.02em" }}>Write on paper,</div>
+          <div style={{ fontSize: 84, lineHeight: 1.05, letterSpacing: "-0.02em" }}>Think better on paper.</div>
           <div style={{ fontSize: 84, lineHeight: 1.05, letterSpacing: "-0.02em", fontStyle: "italic", color: "#2f4a7a" }}>
-            keep it on your Mac.
+            Leave the noise behind.
           </div>
           <div style={{ marginTop: 36, fontSize: 32, color: "#635a4c" }}>
-            A handwritten journal for Mac · private and searchable
+            Distraction-free handwriting sessions for Mac
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const chips: Chip[] = [
 function SidePage({ lines, className }: { lines: string[]; className: string }) {
   return (
     <div
-      className={`ruled absolute top-[70px] left-1/2 h-[340px] w-[260px] rounded-2xl px-[26px] pt-[34px] font-hand text-[22px] leading-7 text-handwriting shadow-float ${className}`}
+      className={`ruled absolute left-1/2 rounded-2xl font-hand text-handwriting shadow-float ${className}`}
     >
       {lines.map((line, i) => (
         <div key={i} className={i === 0 ? "text-ink-muted" : undefined}>
@@ -41,7 +41,7 @@ export function Hero() {
       <header className="sky relative overflow-hidden rounded-t-[28px] px-5 pt-5">
         <SiteNav />
 
-        <div id="top" className="mx-auto flex max-w-[900px] flex-col items-center gap-6 px-2 pt-[88px] text-center">
+        <div id="top" className="mx-auto flex max-w-[1040px] flex-col items-center gap-6 px-2 pt-[88px] text-center">
           <div className="glass inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2 text-sm leading-5 font-medium">
             <span className="inline-flex size-[22px] items-center justify-center rounded-full bg-accent text-on-accent">
               <PencilIcon width={12} height={12} strokeWidth={2.2} />
@@ -49,9 +49,9 @@ export function Hero() {
             For people who think better with a pen
           </div>
           <h1 className="font-serif text-[clamp(46px,7.4vw,96px)] leading-[1.02] font-normal tracking-[-0.025em]">
-            Write on <em className="text-accent italic">paper.</em>
+            Think better on <em className="text-accent italic">paper.</em>
             <br />
-            Keep it on your Mac.
+            Leave the noise behind.
           </h1>
           <p className="max-w-[580px] text-lg leading-7 text-ink-soft">
             Press Start and your Mac steps back. Write by hand for thirty quiet minutes, then scan your pages into a
@@ -72,17 +72,18 @@ export function Hero() {
         </div>
 
         {/* Floating notebook pages */}
-        <div aria-hidden="true" className="relative mx-auto mt-14 h-[430px] max-w-[1120px] sm:h-[470px]">
+        {/* Phones show two pages (the entry and one behind it); wider screens show all three. */}
+        <div aria-hidden="true" className="relative mx-auto mt-10 h-[400px] max-w-[1120px] sm:mt-14 sm:h-[470px]">
           <SidePage
-            className="drift ml-[-330px] -rotate-9"
+            className="drift top-[70px] ml-[-330px] hidden h-[340px] w-[260px] -rotate-9 px-[26px] pt-[34px] text-[22px] leading-7 sm:block"
             lines={["Grateful for —", "chai before anyone", "was awake", "the old bookshop", "Ma's voice note"]}
           />
           <SidePage
-            className="drift ml-[70px] rotate-8 [animation-delay:-3.5s]"
+            className="drift top-0 ml-[-36px] h-[250px] w-[200px] rotate-6 px-5 pt-6 text-[18px] leading-6 [animation-delay:-3.5s] sm:top-[70px] sm:ml-[70px] sm:rotate-8 sm:h-[340px] sm:w-[260px] sm:px-[26px] sm:pt-[34px] sm:text-[22px] sm:leading-7"
             lines={["Why does it slip?", "1. one more feature", "2. scared it's not", "   good enough", "3. ..."]}
           />
-          <div className="ruled drift absolute top-2.5 left-1/2 ml-[-150px] h-[400px] w-[300px] overflow-hidden rounded-2xl pt-[38px] pr-7 pl-11 font-hand text-2xl leading-7 text-handwriting shadow-float-lg [animation-delay:-1.5s]">
-            <div className="absolute inset-y-0 left-[30px] w-[1.5px] bg-ember opacity-60" />
+          <div className="ruled drift absolute top-[86px] left-1/2 ml-[-165px] h-[290px] w-[228px] -rotate-3 overflow-hidden rounded-2xl pt-7 pr-4 pl-9 font-hand text-[19px] leading-6 text-handwriting shadow-float-lg [animation-delay:-1.5s] sm:top-2.5 sm:ml-[-150px] sm:h-[400px] sm:w-[300px] sm:rotate-0 sm:pt-[38px] sm:pr-7 sm:pl-11 sm:text-2xl sm:leading-7">
+            <div className="absolute inset-y-0 left-6 w-[1.5px] bg-ember opacity-60 sm:left-[30px]" />
             <div className="text-ink-muted">Sat, 17 Oct</div>
             <div>Slept badly, but the</div>
             <div>walk helped. Writing</div>

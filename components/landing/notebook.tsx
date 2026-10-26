@@ -48,7 +48,7 @@ export function NotebookSection() {
           />
         </div>
 
-        <div aria-hidden="true" className="sky-soft min-w-0 flex-[1_1_460px] rounded-[28px] px-8 py-10">
+        <div aria-hidden="true" className="sky-soft min-w-0 flex-[1_1_460px] rounded-[28px] px-4 py-6 sm:px-8 sm:py-10">
           <div className="overflow-hidden rounded-2xl bg-paper shadow-[0_24px_56px_rgba(30,50,90,0.18)]">
             <div className="flex items-center gap-2 border-b border-rule px-4 py-3">
               <span className="size-2.5 rounded-full bg-[#d9cfbd]" />
@@ -59,17 +59,17 @@ export function NotebookSection() {
                 mountains
               </div>
             </div>
-            <div className="flex flex-col gap-3.5 p-5">
+            <div className="flex flex-col gap-5 p-4 sm:gap-3.5 sm:p-5">
               {results.map((r) => (
-                <div key={r.date} className="flex items-center gap-4">
-                  <div className="ruled min-w-0 flex-1 overflow-hidden rounded-lg px-[18px] pt-3.5 pb-2 font-hand text-[22px] leading-7 text-handwriting shadow-page">
+                <div key={r.date} className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <div className="ruled w-full min-w-0 flex-1 overflow-hidden rounded-lg px-[18px] pt-3.5 pb-2 font-hand text-[22px] leading-7 text-handwriting shadow-page">
                     {r.lines.map((l) => (
                       <HandLine key={l} text={l} />
                     ))}
                   </div>
-                  <div className="w-[120px] shrink-0">
+                  <div className="flex items-baseline gap-2 px-1 sm:block sm:w-[120px] sm:shrink-0 sm:px-0">
                     <div className="font-serif text-[17px] leading-[22px]">{r.date}</div>
-                    <div className="mt-1 text-xs leading-4 text-ink-muted">{r.meta}</div>
+                    <div className="text-xs leading-4 text-ink-muted sm:mt-1">{r.meta}</div>
                   </div>
                 </div>
               ))}

@@ -21,8 +21,12 @@ const faqs = [
     a: "Well enough to search most words. It can miss some, so the scanned page is always kept as the original.",
   },
   {
+    q: "Can it stop me opening apps on my iPhone?",
+    a: "Yes, if you'd like. Add PenHour Guard once in the Shortcuts app and pick the apps to guard. During a session, opening one sends you back to the Home Screen with a reminder. The rest of the time they open as usual. It needs Focus shared across your Apple devices.",
+  },
+  {
     q: "Can I use it without an iPhone?",
-    a: "Yes. Scan the QR code shown on your Mac with any phone's camera, and send pages over your Wi-Fi.",
+    a: "Yes. Take photos of your pages with any phone or camera, then drag them into PenHour or choose them from Finder.",
   },
 ];
 

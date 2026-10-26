@@ -6,13 +6,13 @@ export const site = {
   name: "PenHour",
   /** The live site, used for canonical links, the sitemap and share previews. */
   url: "https://penhour.com",
-  tagline: "Write on paper, keep it on your Mac.",
+  tagline: "Think better on paper. Leave the noise behind.",
   /** The search result title and description (about 60 and 155 characters at most). */
-  metaTitle: "PenHour: Handwritten Journal App for Mac",
+  metaTitle: "PenHour: Distraction-Free Handwriting for Mac",
   metaDescription:
-    "Write by hand in a focused, timed session with your keyboard locked, then scan your pages into a private journal you can search. Stays on your Mac.",
+    "Write by hand, free of distractions. PenHour locks your keyboard and quiets your Mac and iPhone, then turns your pages into a private, searchable journal.",
   description:
-    "A quiet Mac app for people who think better with a pen. Press Start, write by hand, then scan your pages into a private, searchable notebook that never leaves your Mac.",
+    "A quiet Mac app for people who think better with a pen. Press Start and your keyboard, notifications and social apps go quiet while you write by hand. Then scan your pages into a private notebook you can search.",
   /** Where "Get / Buy PenHour" buttons go. Checkout itself starts from the pricing section (app/api/checkout). */
   buyUrl: "#pricing",
   /** Direct link to the .dmg (or Mac App Store page). */
@@ -32,7 +32,7 @@ export const site = {
   pricing: {
     currency: "USD",
     /** Lifetime license for the first Mac. */
-    firstMac: 10,
+    firstMac: 8,
     /** Discount on every Mac after the first (0.4 = 40% off). */
     extraMacDiscount: 0.4,
     /** Highest number on the slider. */

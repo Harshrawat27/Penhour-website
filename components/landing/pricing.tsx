@@ -16,7 +16,7 @@ export function Pricing() {
       <PricingCalculator />
 
       <p className="mt-5 text-center text-[13px] leading-[18px] text-ink-muted">
-        Requires macOS {site.macosVersion} or later. iPhone optional; any phone camera works for scanning.
+        Requires macOS {site.macosVersion} or later. iPhone optional; photos from any phone work too.
       </p>
     </section>
   );

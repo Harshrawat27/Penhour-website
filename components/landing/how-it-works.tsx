@@ -26,12 +26,33 @@ function StepCard({
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
-  // Touch screens have no hover: play the scene when the card is mostly on screen.
+  // Touch screens have no hover: while the card is mostly on screen, replay its scene on a loop
+  // (play for a few seconds, reset for a beat, play again).
   useEffect(() => {
     if (!window.matchMedia("(hover: none)").matches || !ref.current) return;
-    const io = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting), { threshold: 0.6 });
+    const loop = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const play = () => {
+      setActive(true);
+      if (!loop) return;
+      timer = setTimeout(() => {
+        setActive(false);
+        timer = setTimeout(play, 700);
+      }, 6000);
+    };
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        clearTimeout(timer);
+        if (entry.isIntersecting) play();
+        else setActive(false);
+      },
+      { threshold: 0.6 },
+    );
     io.observe(ref.current);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (

@@ -18,7 +18,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           {site.name} is made by <Fill>{site.legalName}</Fill> (“we”, “us”). This policy covers the {site.name} Mac
-          app, the scanning companion flow on your phone, and this website.
+          app and this website.
         </p>
         <p>Questions about privacy go to {email}. A real person reads every message.</p>
       </>
@@ -51,10 +51,9 @@ const sections: LegalSection[] = [
       <>
         <p>
           When you scan with your iPhone, the pages go straight from your phone to your Mac using Apple&apos;s own
-          features. When you use the QR code with another phone, pages travel over your local Wi-Fi network directly
-          to your Mac. In both cases they don&apos;t pass through our servers.
+          Continuity Camera. Photos you drag in or choose from Finder are copied into your journal folder. Either way
+          they never pass through our servers.
         </p>
-        <p>The link behind the QR code stops working as soon as you save the entry.</p>
       </>
     ),
   },
@@ -62,10 +61,17 @@ const sections: LegalSection[] = [
     id: "handwriting",
     title: "Reading your handwriting",
     body: (
-      <p>
-        Turning your handwriting into searchable text happens on your Mac. Your pages are never uploaded for
-        recognition. You can switch this off at any time in Settings › Privacy.
-      </p>
+      <>
+        <p>
+          Turning your handwriting into searchable text happens on your Mac. Your pages are never uploaded for
+          recognition. You can switch this off at any time in Settings › Privacy.
+        </p>
+        <p>
+          After setup, {site.name} downloads its handwriting reader (a file of about 830 MB) once from Hugging Face,
+          where we host it. Like any download, that request shows your IP address to Hugging Face, but it carries
+          nothing from your journal. Turning the reader off in Settings › Privacy also deletes it.
+        </p>
+      </>
     ),
   },
   {
@@ -74,12 +80,15 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          When you activate {site.name}, the app sends your license key and{" "}
-          <Fill>an anonymous identifier for your Mac</Fill> to <Fill>[LICENSE SERVICE]</Fill> to confirm the key is
-          valid and count how many Macs use it. This never includes anything from your journal.
+          When you activate {site.name}, the app sends your license key and your Mac&apos;s name (as set in System
+          Settings › General › Sharing, for example “Asha&apos;s MacBook Air”) to Dodo Payments, our payment and
+          license provider. That confirms the key is valid and counts how many Macs use it, and the name helps you
+          tell your Macs apart if you ever free one. Nothing from your journal is ever sent.
         </p>
         <p>
-          After activation the app works offline. <Fill>[Confirm whether the app re-checks the license, and how often.]</Fill>
+          After activation the app works offline. About once a week, when you&apos;re online, it sends the license key
+          to Dodo Payments again to check it&apos;s still valid (for example, that it wasn&apos;t refunded). If the
+          check can&apos;t connect, nothing happens and the app keeps working.
         </p>
       </>
     ),
@@ -90,7 +99,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Payments are handled by <Fill>[PAYMENT PROVIDER]</Fill>. They collect your payment details; we never see
+          Payments are handled by Dodo Payments, who act as the seller of record. They collect your payment details; we never see
           your card number. We receive:
         </p>
         <ul>

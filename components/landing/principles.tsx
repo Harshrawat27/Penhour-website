@@ -1,6 +1,6 @@
 const principles = [
   { title: "Paper first", body: "Your handwriting is the content. The app gets out of the way." },
-  { title: "A locked room", body: "Keyboard off, alerts off, until the timer ends." },
+  { title: "A locked room", body: "Keyboard off, alerts off, social apps off, until the timer ends." },
   { title: "Searchable pages", body: "Find any word you ever wrote, on this Mac." },
   { title: "Yours alone", body: "No account, no cloud, no streaks to keep." },
 ];

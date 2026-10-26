@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
-import { AppleIcon } from "./icons";
+import { AppleIcon, CloseIcon, MenuIcon } from "./icons";
 import { Logo } from "./logo";
 import { buttonPrimary } from "./ui";
 
@@ -11,27 +14,66 @@ const navLinks = [
   { href: "/#faq", label: "FAQ" },
 ];
 
-/** The glass pill navigation used on every page. */
+/** The glass pill navigation used on every page. On phones the links fold into a menu button. */
 export function SiteNav() {
+  const [open, setOpen] = useState(false);
+
+  // Escape closes the menu.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <nav
-      aria-label="Main"
-      className="glass mx-auto flex max-w-[1080px] items-center justify-between gap-4 rounded-full py-2 pr-2 pl-[18px]"
-    >
-      <Link href="/" className="text-ink" aria-label={`${site.name} home`}>
-        <Logo />
-      </Link>
-      <div className="hidden gap-8 md:flex">
-        {navLinks.map((l) => (
-          <Link key={l.href} href={l.href} className="text-sm font-medium text-ink hover:text-accent">
-            {l.label}
-          </Link>
-        ))}
+    <nav aria-label="Main" className="relative z-20 mx-auto max-w-[1080px]">
+      <div className="glass flex items-center justify-between gap-2 rounded-full py-2 pr-1.5 pl-4 sm:gap-4 sm:pr-2 sm:pl-[18px]">
+        <Link href="/" className="text-ink" aria-label={`${site.name} home`}>
+          <Logo />
+        </Link>
+        <div className="hidden gap-8 md:flex">
+          {navLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="text-sm font-medium text-ink hover:text-accent">
+              {l.label}
+            </Link>
+          ))}
+        </div>
+        <div className="flex items-center gap-1.5">
+          <a href={site.downloadUrl} className={`${buttonPrimary} max-sm:h-10 max-sm:px-4`}>
+            <AppleIcon className="-mt-0.5" />
+            Download
+          </a>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((o) => !o)}
+            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full text-ink transition-colors hover:bg-paper-raised/70 md:hidden"
+          >
+            {open ? <CloseIcon width={20} height={20} /> : <MenuIcon width={20} height={20} />}
+          </button>
+        </div>
       </div>
-      <a href={site.downloadUrl} className={buttonPrimary}>
-        <AppleIcon className="-mt-0.5" />
-        Download
-      </a>
+
+      {open && (
+        <div
+          id="mobile-menu"
+          className="glass absolute inset-x-0 top-full mt-2 flex flex-col rounded-3xl bg-paper-raised/95 p-2 shadow-chip md:hidden"
+        >
+          {navLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-paper-raised/70 hover:text-accent"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

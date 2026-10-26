@@ -15,8 +15,9 @@ export function Privacy() {
           aria-hidden="true"
           className="absolute inset-0 bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_47px,rgb(255_253_248/0.07)_47px,rgb(255_253_248/0.07)_48px)]"
         />
-        <div aria-hidden="true" className="absolute inset-y-0 left-[8%] w-[1.5px] bg-[#e08a5f] opacity-55" />
-        <div className="relative mx-auto flex max-w-[1080px] flex-wrap items-start gap-16 px-6 py-28">
+        {/* The notebook margin: part of the content column, so it always sits just left of the text. */}
+        <div className="relative mx-auto flex max-w-[1080px] flex-wrap items-start gap-16 py-20 pr-6 pl-12 md:py-28 md:pl-20">
+          <div aria-hidden="true" className="absolute inset-y-0 left-6 w-[1.5px] bg-[#e08a5f] opacity-55 md:left-10" />
           <div className="flex flex-[1_1_380px] flex-col gap-5">
             <div className="flex items-center gap-2 text-xs leading-4 font-semibold tracking-[0.06em] text-[#c9d4e8] uppercase">
               <LockIcon width={14} height={14} />

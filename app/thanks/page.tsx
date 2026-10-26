@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { SiteFooter } from "@/components/landing/closing";
 import { SiteNav } from "@/components/landing/site-nav";
-import { buttonOutline } from "@/components/landing/ui";
+import { buttonOutline, buttonPrimary } from "@/components/landing/ui";
 import { dodo } from "@/lib/dodo";
 import { site } from "@/lib/site";
 
@@ -69,10 +69,14 @@ async function Result({ searchParams }: { searchParams: SearchParams }) {
               </code>
             ))}
             <p className="mt-4 text-sm leading-6 text-ink-muted">
-              Open {site.name} and enter this key to activate it.
+              Download {site.name}, open it and enter this key to activate it.
             </p>
           </div>
         ) : null}
+        <a href={site.downloadUrl} className={`${buttonPrimary} mt-8`}>
+          Download {site.name} for Mac
+        </a>
+        <p className="mt-3 text-[13px] text-ink-muted">Requires macOS {site.macosVersion} or later.</p>
         <p className="mx-auto mt-6 max-w-[480px] text-[15px] leading-6 text-ink-soft">
           {email ? (
             <>

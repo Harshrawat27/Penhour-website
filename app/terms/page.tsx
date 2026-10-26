@@ -56,7 +56,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Purchases are processed by <Fill>[PAYMENT PROVIDER]</Fill>, which may add sales tax or VAT depending on
+          Purchases are processed by Dodo Payments, our seller of record, which may add sales tax or VAT depending on
           where you live. Prices are in {site.pricing.currency}.
         </p>
         <p>

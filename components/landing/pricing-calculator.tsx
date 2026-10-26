@@ -23,7 +23,7 @@ function LaptopIcon({ active }: { active: boolean }) {
 
 const included = [
   { title: "Locked writing sessions", body: "Keyboard and notifications off until the timer ends.", Icon: TimerIcon },
-  { title: "Scan with any phone", body: "iPhone scanner or a QR code, straight to your Mac.", Icon: CheckIcon },
+  { title: "Scan with any phone", body: "Scan with your iPhone, or drop in photos from any phone.", Icon: CheckIcon },
   { title: "Search your handwriting", body: "Read on device. Never uploaded.", Icon: SearchIcon },
   { title: "Touch ID lock and export", body: "Keep the notebook private; take pages anywhere.", Icon: LockIcon },
 ];
