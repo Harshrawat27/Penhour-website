@@ -126,7 +126,6 @@ function StartArt({ active }: { active: boolean }) {
       <div className="font-serif text-7xl leading-[72px] font-light tabular-nums">{time}</div>
       <div className="flex gap-1.5 text-[13px] font-medium">
         <span className="rounded-full bg-paper-raised px-3 py-1 ring-1 ring-accent ring-inset">Reflect</span>
-        <span className="rounded-full bg-paper-raised/60 px-3 py-1">Rain</span>
       </div>
 
       <div className="relative flex h-10 w-[200px] items-center justify-center">
@@ -229,7 +228,7 @@ export function HowItWorks() {
           number="01"
           numberClass="text-accent"
           title="Press Start"
-          body={`Pick what kind of session you want, a sound and a length. ${site.name} silences notifications and locks the keyboard.`}
+          body={`Pick what kind of session you want and how long. ${site.name} silences notifications and locks the keyboard.`}
           art={(active) => <StartArt active={active} />}
         />
         <StepCard

@@ -25,6 +25,10 @@ const faqs = [
     a: "Yes, if you'd like. Add PenHour Guard once in the Shortcuts app and pick the apps to guard. During a session, opening one sends you back to the Home Screen with a reminder. The rest of the time they open as usual. It needs Focus shared across your Apple devices.",
   },
   {
+    q: "Can I get a refund?",
+    a: "Yes. Email contact@penhour.com within 7 days of buying, from the address you bought with, and we'll refund you in full.",
+  },
+  {
     q: "Can I use it without an iPhone?",
     a: "Yes. Take photos of your pages with any phone or camera, then drag them into PenHour or choose them from Finder.",
   },

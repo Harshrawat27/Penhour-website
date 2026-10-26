@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fill, LegalPage, type LegalSection } from "@/components/legal/legal-page";
+import { LegalPage, type LegalSection } from "@/components/legal/legal-page";
 import { formatPrice, priceFor, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ const sections: LegalSection[] = [
     title: "The agreement",
     body: (
       <p>
-        These terms are between you and <Fill>{site.legalName}</Fill> (“we”, “us”). By buying, downloading or using{" "}
+        These terms are between you and {site.legalName} (“we”, “us”). By buying, downloading or using{" "}
         {site.name} you agree to them. If you don&apos;t agree, please don&apos;t use the app.
       </p>
     ),
@@ -40,7 +40,9 @@ const sections: LegalSection[] = [
           </li>
           <li>
             <strong>Lifetime.</strong> Your license doesn&apos;t expire.{" "}
-            <Fill>[Say what updates are included, e.g. “all updates to version 1” or “all future updates”.]</Fill>
+            It includes every update to the version you buy, plus the next {site.includedMajorUpdates} major
+            versions. For example, if you buy version 1, you get every release up to and including version{" "}
+            {1 + site.includedMajorUpdates}.
           </li>
         </ul>
         <p>
@@ -56,14 +58,13 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Purchases are processed by Dodo Payments, our seller of record, which may add sales tax or VAT depending on
-          where you live. Prices are in {site.pricing.currency}.
+          Purchases are processed by Dodo Payments, our seller of record. Prices are in {site.pricing.currency} and
+          don&apos;t include tax: Dodo adds sales tax or VAT at checkout where your country requires it.
         </p>
         <p>
-          <Fill>
-            [Refund policy, e.g. “If {site.name} isn&apos;t right for you, email us within 14 days of purchase for a full
-            refund. No questions asked.”]
-          </Fill>
+          Changed your mind? Email {email} within {site.refundDays} days of your purchase, from the address you
+          bought with, and we&apos;ll refund you in full. Once a purchase is refunded, its license key stops working
+          on every Mac.
         </p>
       </>
     ),
@@ -135,11 +136,10 @@ const sections: LegalSection[] = [
   },
   {
     id: "law",
-    title: "Governing law",
+    title: "Your rights as a consumer",
     body: (
       <p>
-        These terms are governed by the laws of <Fill>{site.jurisdiction}</Fill>. If you&apos;re a consumer, you also
-        keep the protections of the law where you live.
+        Nothing in these terms takes away the rights you have as a consumer under the law where you live.
       </p>
     ),
   },

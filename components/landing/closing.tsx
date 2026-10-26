@@ -1,7 +1,6 @@
 import { site } from "@/lib/site";
 import { AppleIcon } from "./icons";
 import { Logo } from "./logo";
-import { Newsletter } from "./newsletter";
 import { buttonGlass, buttonPrimary } from "./ui";
 
 const columns = [
@@ -66,7 +65,6 @@ export function SiteFooter() {
             <Logo size={26} />
             <p className="text-sm leading-[22px] text-ink-muted">{site.tagline}</p>
           </div>
-          <Newsletter />
         </div>
 
         <nav aria-label="Footer" className="grid grid-cols-3 gap-6">

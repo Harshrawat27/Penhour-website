@@ -15,20 +15,18 @@ export const site = {
     "A quiet Mac app for people who think better with a pen. Press Start and your keyboard, notifications and social apps go quiet while you write by hand. Then scan your pages into a private notebook you can search.",
   /** Where "Get / Buy PenHour" buttons go. Checkout itself starts from the pricing section (app/api/checkout). */
   buyUrl: "#pricing",
-  /** Direct link to the .dmg (or Mac App Store page). */
-  downloadUrl: "[DOWNLOAD URL]",
-  /**
-   * Newsletter signup endpoint. The form POSTs JSON { email } here.
-   * Leave empty until you connect a provider (Buttondown, ConvertKit, Resend…).
-   */
-  newsletterEndpoint: "",
-  contactEmail: "[CONTACT EMAIL]",
-  /** Who the legal pages are from, and where. */
-  legalName: "[YOUR NAME OR COMPANY]",
-  jurisdiction: "[COUNTRY / STATE]",
-  legalLastUpdated: "18 October 2026",
-  macosVersion: "[VERSION]",
+  /** Always the newest PenHour.dmg on GitHub Releases (published by penhour/scripts/release.sh). */
+  downloadUrl: "https://github.com/Harshrawat27/penhour-releases/releases/latest/download/PenHour.dmg",
+  contactEmail: "contact@penhour.com",
+  /** Who the legal pages are from. */
+  legalName: "PenHour",
+  legalLastUpdated: "26 October 2026",
+  macosVersion: "14 Sonoma",
   copyrightYear: 2026,
+  /** Refunds are done by hand: the buyer emails contactEmail within this many days. */
+  refundDays: 7,
+  /** Major versions included after the one bought (version 1 buyers get 2, 3 and 4). */
+  includedMajorUpdates: 3,
   pricing: {
     currency: "USD",
     /** Lifetime license for the first Mac. */

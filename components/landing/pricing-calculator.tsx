@@ -128,7 +128,7 @@ export function PricingCalculator() {
             <ArrowRightIcon />
           </button>
         </form>
-        <p className="mt-3 text-center text-xs text-ink-muted">Pay once. No subscription, no account.</p>
+        <p className="mt-3 text-center text-xs text-ink-muted">Pay once. No subscription, no account. Tax added at checkout where it applies.</p>
       </div>
 
       {/* What's included */}

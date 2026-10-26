@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fill, LegalPage, type LegalSection } from "@/components/legal/legal-page";
+import { LegalPage, type LegalSection } from "@/components/legal/legal-page";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,8 +17,8 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          {site.name} is made by <Fill>{site.legalName}</Fill> (“we”, “us”). This policy covers the {site.name} Mac
-          app and this website.
+          This policy covers the {site.name} Mac app and this website. “We” and “us” means {site.legalName}, the
+          people who make it.
         </p>
         <p>Questions about privacy go to {email}. A real person reads every message.</p>
       </>
@@ -33,7 +33,7 @@ const sections: LegalSection[] = [
         <ul>
           <li>Scanned page images</li>
           <li>Text read from your handwriting</li>
-          <li>Entry dates, session types, sounds and lengths</li>
+          <li>Entry dates, session types and lengths</li>
           <li>Your settings</li>
         </ul>
         <p>
@@ -115,25 +115,13 @@ const sections: LegalSection[] = [
     ),
   },
   {
-    id: "newsletter",
-    title: "The newsletter",
-    body: (
-      <p>
-        If you sign up for Letters from the desk, we store your email address with <Fill>[EMAIL PROVIDER]</Fill> and
-        use it only to send the newsletter. Every email has an unsubscribe link, and unsubscribing deletes you from
-        the list.
-      </p>
-    ),
-  },
-  {
     id: "website",
     title: "This website",
     body: (
       <p>
-        <Fill>
-          [Pick one: “This website doesn&apos;t use cookies or analytics.” or “We use [privacy-friendly analytics
-          tool] to count visits. It doesn&apos;t use cookies or collect personal data.”]
-        </Fill>
+        We use Vercel Web Analytics to count visits to this website: which pages are viewed, the country and the
+        kind of device. It doesn&apos;t use cookies and doesn&apos;t collect anything that identifies you. The app
+        itself has no analytics.
       </p>
     ),
   },
@@ -154,7 +142,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Wherever you live, you can ask us to see, correct or delete the purchase and newsletter information we
+          Wherever you live, you can ask us to see, correct or delete the purchase information we
           hold about you. Email {email} and we&apos;ll reply within 30 days. If you&apos;re in the EU, UK or
           California, you also have the rights your local law gives you, including the right to complain to your
           data protection authority.
@@ -189,7 +177,7 @@ export default function PrivacyPage() {
       summary={[
         "Your pages, handwriting text and entries stay on your Mac. We never receive them.",
         "No account, no cloud sync, no analytics or ads in the app.",
-        "We only hold what's needed to sell you a license, and your email if you join the newsletter.",
+        "We only hold what's needed to sell you a license.",
         "Email us any time to see or delete that information.",
       ]}
       sections={sections}
