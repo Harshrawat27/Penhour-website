@@ -25,6 +25,10 @@ const faqs = [
     a: "Yes, if you'd like. Add PenHour Guard once in the Shortcuts app and pick the apps to guard. During a session, opening one sends you back to the Home Screen with a reminder. The rest of the time they open as usual. It needs Focus shared across your Apple devices.",
   },
   {
+    q: "Is there an iPhone app?",
+    a: "Not yet. PenHour for iPhone is on its way, along with a community of people who write by hand. The price goes up when they launch.",
+  },
+  {
     q: "Which Macs does it work on?",
     a: "Any Mac running macOS 14 Sonoma or later, Apple silicon or Intel. The better handwriting reader needs Apple silicon (M1 or newer); on Intel Macs, PenHour uses the built-in reader.",
   },

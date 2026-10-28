@@ -12,7 +12,16 @@ const navLinks = [
   { href: "/#privacy", label: "Privacy" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/#coming-soon", label: "iOS app", soon: true },
 ];
+
+function SoonTag() {
+  return (
+    <span className="rounded-full bg-plum-soft px-2 py-0.5 text-[10px] leading-3 font-semibold tracking-[0.06em] text-plum uppercase">
+      Coming soon
+    </span>
+  );
+}
 
 /** The glass pill navigation used on every page. On phones the links fold into a menu button. */
 export function SiteNav() {
@@ -34,8 +43,13 @@ export function SiteNav() {
         </Link>
         <div className="hidden gap-8 md:flex">
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="text-sm font-medium text-ink hover:text-accent">
+            <Link
+              key={l.href}
+              href={l.href}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent"
+            >
               {l.label}
+              {l.soon && <SoonTag />}
             </Link>
           ))}
         </div>
@@ -67,9 +81,10 @@ export function SiteNav() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-paper-raised/70 hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-paper-raised/70 hover:text-accent"
             >
               {l.label}
+              {l.soon && <SoonTag />}
             </Link>
           ))}
         </div>
