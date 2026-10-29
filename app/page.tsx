@@ -2,6 +2,7 @@ import { Closing } from "@/components/landing/closing";
 import { Faq } from "@/components/landing/faq";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
+import { IosApp } from "@/components/landing/ios-app";
 import { NotebookSection } from "@/components/landing/notebook";
 import { PhoneGuard } from "@/components/landing/phone-guard";
 import { Pricing } from "@/components/landing/pricing";
@@ -29,6 +30,7 @@ export default function Home() {
       <Hero />
       <main>
         <Principles />
+        <IosApp />
         <HowItWorks />
         <PhoneGuard />
         <NotebookSection />

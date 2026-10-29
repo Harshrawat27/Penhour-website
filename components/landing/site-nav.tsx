@@ -12,13 +12,21 @@ const navLinks = [
   { href: "/#privacy", label: "Privacy" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
-  { href: "/#coming-soon", label: "iOS app", soon: true },
+  { href: "/#ios", label: "iOS app", soon: true },
 ];
 
-function SoonTag() {
+/** "Coming soon", shortened to "Soon" where the desktop bar is tight. */
+function SoonTag({ short = false }: { short?: boolean }) {
   return (
-    <span className="rounded-full bg-plum-soft px-2 py-0.5 text-[10px] leading-3 font-semibold tracking-[0.06em] text-plum uppercase">
-      Coming soon
+    <span className="rounded-full bg-plum-soft px-2 py-0.5 text-[10px] leading-3 font-semibold tracking-[0.06em] whitespace-nowrap text-plum uppercase">
+      {short ? (
+        <>
+          <span className="lg:hidden">Soon</span>
+          <span className="max-lg:hidden">Coming soon</span>
+        </>
+      ) : (
+        "Coming soon"
+      )}
     </span>
   );
 }
@@ -41,15 +49,15 @@ export function SiteNav() {
         <Link href="/" className="text-ink" aria-label={`${site.name} home`}>
           <Logo />
         </Link>
-        <div className="hidden gap-8 md:flex">
+        <div className="hidden gap-5 md:flex lg:gap-8">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent"
+              className="inline-flex items-center gap-1.5 text-sm font-medium whitespace-nowrap text-ink hover:text-accent"
             >
               {l.label}
-              {l.soon && <SoonTag />}
+              {l.soon && <SoonTag short />}
             </Link>
           ))}
         </div>
